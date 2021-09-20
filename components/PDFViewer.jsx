@@ -34,6 +34,7 @@ export default function PDFViewer() {
   const [notes, setNotes] = useState([]);
   const [currentNote, setCurrentNote] = useState("");
 
+
   function onFileChange(event) {
     setFile(event.target.files[0]);
   }
@@ -69,7 +70,7 @@ export default function PDFViewer() {
 
   return (
     <Box className="main" onMouseDown={() => hideTooltip()}>
-      <Navbar onFileChange={onFileChange} />
+      <Navbar fileName={file.name} onFileChange={onFileChange} />
       <Grid templateColumns="repeat(5, 1fr)" gap={1}>
         <GridItem colSpan={3}>
           <Center>

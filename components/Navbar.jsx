@@ -1,11 +1,11 @@
 import React from "react";
-import { Flex, Box, Spacer, Heading, HStack } from "@chakra-ui/react";
+import { Flex, Box, Spacer, Heading, HStack, Text } from "@chakra-ui/react";
 import { SettingsDrawer } from "./SettingsDrawer";
 import { FileUploadButton } from "./FileUploadButton";
 
 import "./Navbar.css";
 
-const NavBar = ({ onFileChange }) => {
+const NavBar = ({ fileName, onFileChange }) => {
   return (
     <div className={"sticky"}>
       <Flex m={4}>
@@ -14,6 +14,7 @@ const NavBar = ({ onFileChange }) => {
         </Box>
         <Spacer />
         <HStack spacing={2}>
+          {fileName && <Text>{fileName}</Text>}
           <FileUploadButton onFileChange={onFileChange} />
           <SettingsDrawer />
         </HStack>
