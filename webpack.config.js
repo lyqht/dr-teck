@@ -28,14 +28,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.less$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'less-loader',
-        ],
-      },
-      {
         test: /\.css$/,
         use: [
           'style-loader',

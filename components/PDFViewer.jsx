@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { Box, Center, Flex } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import Navbar from "./Navbar";
 import NoteClipper from "./NoteClipper";
-
-import "./PDFViewer.less";
+import "./PDFViewer.css";
 
 const options = {
   cMapUrl: "cmaps/",
   cMapPacked: true,
 };
 
-const virtualReference = {
+const startVirtualReference = {
   getBoundingClientRect() {
     return {
       top: 0,
@@ -27,8 +28,9 @@ export default function PDFViewer() {
   const [file, setFile] = useState("./sample2.pdf");
   const [numPages, setNumPages] = useState(null);
   const [showTooltip, setShowTooltip] = useState(false);
-  const [virtualReference, setVirtualReference] = useState(null);
-  const [notes, setNotes] = useState([]);
+  const [virtualReference, setVirtualReference] = useState(
+    startVirtualReference
+  );
 
   function onFileChange(event) {
     setFile(event.target.files[0]);
@@ -57,17 +59,11 @@ export default function PDFViewer() {
   const isProduction = process.env.NODE_ENV === "production";
 
   return (
-    <div className="main" onMouseDown={() => hideTooltip()}>
+    <Box className="main" onMouseDown={() => hideTooltip()}>
       <NoteClipper virtualReference={virtualReference} toShow={showTooltip} />
-      <header>
-        <h1>Dr.Teck</h1>
-      </header>
-      <div className="main__container">
-        <div className="main__container__load">
-          <label htmlFor="file">Load from file:</label>{" "}
-          <input onChange={onFileChange} type="file" />
-        </div>
-        <div className="main__container__document">
+      <Navbar onFileChange={onFileChange} />
+      <Center>
+        <Flex>
           <Document
             file={file}
             onLoadSuccess={onDocumentLoadSuccess}
@@ -75,14 +71,15 @@ export default function PDFViewer() {
           >
             {Array.from(new Array(isProduction ? numPages : 1), (el, index) => (
               <Page
+                className={"pdf-page"}
                 key={`page_${index + 1}`}
                 pageNumber={index + 1}
                 onMouseUp={() => putTooltipAtSelectedText()}
               ></Page>
             ))}
           </Document>
-        </div>
-      </div>
-    </div>
+        </Flex>
+      </Center>
+    </Box>
   );
 }

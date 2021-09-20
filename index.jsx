@@ -1,5 +1,11 @@
-import React from 'react';
-import { render } from 'react-dom';
-import PDFViewer from './components/PDFViewer';
+import { ChakraProvider } from "@chakra-ui/react";
+import React from "react";
+import { render } from "react-dom";
+import PDFViewer from "./components/PDFViewer";
 
-render(<PDFViewer />, document.getElementById('react-root'));
+render(
+  <ChakraProvider>
+    <PDFViewer />
+  </ChakraProvider>,
+  document.getElementById("react-root")
+);
