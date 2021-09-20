@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Container, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Center, Grid, GridItem } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -11,32 +11,16 @@ const options = {
   cMapPacked: true,
 };
 
-const startVirtualReference = {
-  getBoundingClientRect() {
-    return {
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-      width: 0,
-      height: 0,
-    };
-  },
-};
-
 export default function PDFViewer() {
   const [file, setFile] = useState("./sample2.pdf");
   const [numPages, setNumPages] = useState(null);
-  const [showTooltip, setShowTooltip] = useState(false);
-  const [virtualReference, setVirtualReference] = useState(
-    startVirtualReference
-  );
   const [notes, setNotes] = useState([]);
   const [currentNote, setCurrentNote] = useState("");
 
-
   function onFileChange(event) {
-    setFile(event.target.files[0]);
+    if (event.target.files[0] != null) {
+      setFile(event.target.files[0]);
+    }
   }
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
@@ -47,16 +31,8 @@ export default function PDFViewer() {
     {
       let selection = document.getSelection();
       if (!selection.isCollapsed) {
-        setVirtualReference(selection.getRangeAt(0));
-        setShowTooltip(true);
         setCurrentNote(selection + "");
       }
-    }
-  }
-
-  function hideTooltip() {
-    if (showTooltip) {
-      setShowTooltip(false);
     }
   }
 

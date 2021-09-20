@@ -1,20 +1,18 @@
-import React from "react";
 import {
-  useDisclosure,
-  useColorMode,
+  Button,
   Drawer,
   DrawerBody,
-  DrawerFooter,
+  DrawerCloseButton,
+  DrawerContent,
   DrawerHeader,
   DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  Button,
-  Switch,
   FormControl,
   FormLabel,
-  Text,
+  Switch,
+  useColorMode,
+  useDisclosure,
 } from "@chakra-ui/react";
+import React from "react";
 
 export const SettingsDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
