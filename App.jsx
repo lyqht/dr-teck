@@ -3,7 +3,6 @@ import React from "react";
 import PDFViewer from "./components/PDFViewer";
 import { ColorModeScript } from "@chakra-ui/react";
 import theme from "./theme";
-import "./App.css";
 
 const App = () => {
   return (
