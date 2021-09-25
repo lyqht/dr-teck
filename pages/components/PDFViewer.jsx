@@ -1,10 +1,10 @@
 import { Box, Center, Grid, GridItem } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import { Document, Page, pdfjs } from "react-pdf";
 import Navbar from "./Navbar";
 import { NotesDrawer } from "./NotesDrawer";
-import "./PDFViewer.css";
+import styles from "./PDFViewer.module.css";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const options = {
   cMapUrl: "cmaps/",
@@ -45,20 +45,19 @@ export default function PDFViewer() {
   }
 
   return (
-    <Box className="main" onMouseDown={() => hideTooltip()}>
+    <Box className={styles.main}>
       <Navbar fileName={file.name} onFileChange={onFileChange} />
       <Grid templateColumns="repeat(5, 1fr)" gap={1}>
         <GridItem colSpan={3}>
           <Center>
             <Document
-              className={"pdf-document"}
               file={file}
               onLoadSuccess={onDocumentLoadSuccess}
               options={options}
             >
               {Array.from(new Array(numPages), (el, index) => (
                 <Page
-                  className={"pdf-page"}
+                  className={styles.pdfPage}
                   key={`page_${index + 1}`}
                   pageNumber={index + 1}
                   onMouseUp={() => putTooltipAtSelectedText()}

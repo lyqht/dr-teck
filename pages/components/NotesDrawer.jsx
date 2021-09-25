@@ -1,7 +1,7 @@
 import { Box, VStack } from "@chakra-ui/layout";
 import { Button, FormControl, FormLabel, Textarea } from "@chakra-ui/react";
 import React from "react";
-import "./NotesDrawer.css";
+import styles from "./NotesDrawer.module.css";
 
 export const NoteSnippet = ({ note }) => {
   return (
@@ -48,7 +48,7 @@ export const NotesDrawer = ({
       w={"35%"}
       mb={16}
       overflowY={"auto"}
-      className={"fixed"}
+      className={styles.fixed}
     >
       <SaveNoteForm
         currentNote={currentNote}

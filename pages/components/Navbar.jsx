@@ -3,11 +3,11 @@ import { Flex, Box, Spacer, Heading, HStack, Text } from "@chakra-ui/react";
 import { SettingsDrawer } from "./SettingsDrawer";
 import { FileUploadButton } from "./FileUploadButton";
 
-import "./Navbar.css";
+import styles from "./Navbar.module.css";
 
 const NavBar = ({ fileName, onFileChange }) => {
   return (
-    <div className={"sticky"}>
+    <div className={styles.sticky}>
       <Flex m={4}>
         <Box>
           <Heading size="md">Dr.Teck</Heading>

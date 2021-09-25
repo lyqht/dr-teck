@@ -1,11 +1,11 @@
 # Dev Log
 
-## 17 September 2020
+## 17 September 2021
 
 - Start of Project - initialized using the sample webpack5 repository from react-pdf
 - Added react-popper to create a note clipper
 
-## 20 September 2020
+## 20 September 2021
 
 **Features:**
 
@@ -23,3 +23,7 @@
 **Misc:**
 
 - Archived the old NoteClipper.jsx made using Popper.js, as the new design layout for saving the notes does not require a pop up.
+
+## 25 September 2021
+
+Tried to add Notion to the app, but just realized that Notion does not support CORS, so I would have to migrate to a NextJS structure instead.
