@@ -1,6 +1,6 @@
-# dr-teck
+# Pdf-note-taker
 
-A PDF Viewer Web App
+A notetaker app where you can highlight text in a PDF to save them as notes (in memory for now) 
 
 ## Dev Log
 
