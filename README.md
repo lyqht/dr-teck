@@ -9,3 +9,4 @@ Visit the change log at [DEVLOG.md](./DEVLOG.md)
 **Articles**:
 
 - [3 easy steps that I used to work on my side project more effectively](https://blog.esteetey.dev/3-easy-steps-that-i-used-to-work-on-my-side-project-more-effectively)
+- [Migrate a non-CRA React project to Next.js](https://blog.esteetey.dev/migrate-a-non-cra-react-project-to-nextjs)
